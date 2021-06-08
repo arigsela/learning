@@ -7,14 +7,40 @@ import java.util.Arrays;
 class Main {
 	public static void main (String[] args) {
 	    
+      /*
       int number = 3;
       System.out.println(findFactorialRecursive(number));
       System.out.println(findFactorialIterative(number));
 
-      number = 2;
+      number = 100;
       System.out.println(findFactorialRecursive(number));
       System.out.println(findFactorialIterative(number));
+      */
+
+      int number = 3;
+      //0 1 1 2 3 = 3
+      System.out.println(fibonacciRecursive(number));
+      System.out.println(fibonacciIterative(number));
 	}
+
+public static int fibonacciIterative(int n) { //O(n)
+  int[] arr = {0,1};
+
+  for (int i = 2; i < n; i++) {
+      arr[i] = arr[i-2] + arr[i-1];
+  }
+
+  return arr[n-1];
+}
+
+public static int fibonacciRecursive(int n) { //O()
+  if (n < 2) {
+    return n;
+  }
+
+  return fibonacciRecursive(n-1) + fibonacciRecursive(n-2);
+}
+
 
   public static int findFactorialRecursive(int number) {
 
