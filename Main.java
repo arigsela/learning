@@ -12,6 +12,7 @@ class Main {
 	    // are they int or long or what size limit per item?
 	    // Do I need to validate if its a Number
 	    
+      /*
 	    int[] arr1 = {1,2,4};
 	    int[] arr2 = {1,3,5,9};
 	    System.out.println(Arrays.toString(mergeArrays(arr1,arr2)));
@@ -23,9 +24,33 @@ class Main {
 	    int[] arr5 = {};
 	    int[] arr6 = {};
 	    System.out.println(Arrays.toString(mergeArrays(arr5,arr6)));
+      */
+
+      int[] arr1 = {2,1,5,1,3,2};
+      int k1 = 3;
+      System.out.println(getMaximumSum(arr1, k1));
+
 	    
 	}
 	
+  public static int getMaximumSum(int[] arr, int k) {
+    int totalSum = 0;
+    int winSum = 0;
+    int winStart = 0;
+
+    for (int winEnd = 0; winEnd < arr.length; winEnd++) {
+      winSum+=arr[winEnd];
+
+      if (winEnd >= k -1) {
+        totalSum = Math.max(totalSum, winSum);
+        winSum-=arr[winStart];
+        winStart++;
+      }
+    }
+  
+    return totalSum;
+  }
+
 	public static int[] mergeArrays(int[] arr1, int[] arr2) {
 	    // create mergeArray
 	    // loop trough arr1 and check if any value of arr2 is smaller or equal to store in mergeArray n^2
